@@ -30,18 +30,18 @@ GraspDetector::GraspDetector(const std::string &config_filename) {
       config_file.getValueOfKey<bool>("plot_clustered_grasps", false);
   plot_selected_grasps_ =
       config_file.getValueOfKey<bool>("plot_selected_grasps", false);
-  printf("============ PLOTTING ========================\n");
-  printf("plot_normals: %s\n", plot_normals_ ? "true" : "false");
-  printf("plot_samples %s\n", plot_samples_ ? "true" : "false");
-  printf("plot_candidates: %s\n", plot_candidates_ ? "true" : "false");
-  printf("plot_filtered_candidates: %s\n",
-         plot_filtered_candidates_ ? "true" : "false");
-  printf("plot_valid_grasps: %s\n", plot_valid_grasps_ ? "true" : "false");
-  printf("plot_clustered_grasps: %s\n",
-         plot_clustered_grasps_ ? "true" : "false");
-  printf("plot_selected_grasps: %s\n",
-         plot_selected_grasps_ ? "true" : "false");
-  printf("==============================================\n");
+  // printf("============ PLOTTING ========================\n");
+  // printf("plot_normals: %s\n", plot_normals_ ? "true" : "false");
+  // printf("plot_samples %s\n", plot_samples_ ? "true" : "false");
+  // printf("plot_candidates: %s\n", plot_candidates_ ? "true" : "false");
+  // printf("plot_filtered_candidates: %s\n",
+  //        plot_filtered_candidates_ ? "true" : "false");
+  // printf("plot_valid_grasps: %s\n", plot_valid_grasps_ ? "true" : "false");
+  // printf("plot_clustered_grasps: %s\n",
+  //        plot_clustered_grasps_ ? "true" : "false");
+  // printf("plot_selected_grasps: %s\n",
+  //        plot_selected_grasps_ ? "true" : "false");
+  // printf("==============================================\n");
 
   // Create object to generate grasp candidates.
   candidate::CandidatesGenerator::Parameters generator_params;
@@ -87,31 +87,31 @@ GraspDetector::GraspDetector(const std::string &config_filename) {
   candidates_generator_ = std::make_unique<candidate::CandidatesGenerator>(
       generator_params, hand_search_params);
 
-  printf("============ CLOUD PREPROCESSING =============\n");
-  printf("voxelize: %s\n", generator_params.voxelize_ ? "true" : "false");
-  printf("voxel_size: %.3f\n", generator_params.voxel_size_);
-  printf("remove_outliers: %s\n",
-         generator_params.remove_statistical_outliers_ ? "true" : "false");
-  printStdVector(generator_params.workspace_, "workspace");
-  printf("sample_above_plane: %s\n",
-         generator_params.sample_above_plane_ ? "true" : "false");
-  printf("normals_radius: %.3f\n", generator_params.normals_radius_);
-  printf("refine_normals_k: %d\n", generator_params.refine_normals_k_);
-  printf("==============================================\n");
+  // printf("============ CLOUD PREPROCESSING =============\n");
+  // printf("voxelize: %s\n", generator_params.voxelize_ ? "true" : "false");
+  // printf("voxel_size: %.3f\n", generator_params.voxel_size_);
+  // printf("remove_outliers: %s\n",
+  //        generator_params.remove_statistical_outliers_ ? "true" : "false");
+  // printStdVector(generator_params.workspace_, "workspace");
+  // printf("sample_above_plane: %s\n",
+  //        generator_params.sample_above_plane_ ? "true" : "false");
+  // printf("normals_radius: %.3f\n", generator_params.normals_radius_);
+  // printf("refine_normals_k: %d\n", generator_params.refine_normals_k_);
+  // printf("==============================================\n");
 
-  printf("============ CANDIDATE GENERATION ============\n");
-  printf("num_samples: %d\n", hand_search_params.num_samples_);
-  printf("num_threads: %d\n", hand_search_params.num_threads_);
-  printf("nn_radius: %3.2f\n", hand_search_params.nn_radius_frames_);
-  printStdVector(hand_search_params.hand_axes_, "hand axes");
-  printf("num_orientations: %d\n", hand_search_params.num_orientations_);
-  printf("num_finger_placements: %d\n",
-         hand_search_params.num_finger_placements_);
-  printf("deepen_hand: %s\n",
-         hand_search_params.deepen_hand_ ? "true" : "false");
-  printf("friction_coeff: %3.2f\n", hand_search_params.friction_coeff_);
-  printf("min_viable: %d\n", hand_search_params.min_viable_);
-  printf("==============================================\n");
+  // printf("============ CANDIDATE GENERATION ============\n");
+  // printf("num_samples: %d\n", hand_search_params.num_samples_);
+  // printf("num_threads: %d\n", hand_search_params.num_threads_);
+  // printf("nn_radius: %3.2f\n", hand_search_params.nn_radius_frames_);
+  // printStdVector(hand_search_params.hand_axes_, "hand axes");
+  // printf("num_orientations: %d\n", hand_search_params.num_orientations_);
+  // printf("num_finger_placements: %d\n",
+  //        hand_search_params.num_finger_placements_);
+  // printf("deepen_hand: %s\n",
+  //        hand_search_params.deepen_hand_ ? "true" : "false");
+  // printf("friction_coeff: %3.2f\n", hand_search_params.friction_coeff_);
+  // printf("min_viable: %d\n", hand_search_params.min_viable_);
+  // printf("==============================================\n");
 
   // TODO: Set the camera position.
   //  Eigen::Matrix3Xd view_points(3,1);
@@ -137,11 +137,11 @@ GraspDetector::GraspDetector(const std::string &config_filename) {
         model_file, weights_file, static_cast<net::Classifier::Device>(device),
         batch_size);
     min_score_ = config_file.getValueOfKey<int>("min_score", 0);
-    printf("============ CLASSIFIER ======================\n");
-    printf("model_file: %s\n", model_file.c_str());
-    printf("weights_file: %s\n", weights_file.c_str());
-    printf("batch_size: %d\n", batch_size);
-    printf("==============================================\n");
+    // printf("============ CLASSIFIER ======================\n");
+    // printf("model_file: %s\n", model_file.c_str());
+    // printf("weights_file: %s\n", weights_file.c_str());
+    // printf("batch_size: %d\n", batch_size);
+    // printf("==============================================\n");
   }
 
   // Read additional grasp image creation parameters.
@@ -159,11 +159,11 @@ GraspDetector::GraspDetector(const std::string &config_filename) {
       "workspace_grasps", "-1 1 -1 1 -1 1");
   min_aperture_ = config_file.getValueOfKey<double>("min_aperture", 0.0);
   max_aperture_ = config_file.getValueOfKey<double>("max_aperture", 0.085);
-  printf("============ CANDIDATE FILTERING =============\n");
-  printStdVector(workspace_grasps_, "candidate_workspace");
-  printf("min_aperture: %3.4f\n", min_aperture_);
-  printf("max_aperture: %3.4f\n", max_aperture_);
-  printf("==============================================\n");
+  // printf("============ CANDIDATE FILTERING =============\n");
+  // printStdVector(workspace_grasps_, "candidate_workspace");
+  // printf("min_aperture: %3.4f\n", min_aperture_);
+  // printf("max_aperture: %3.4f\n", max_aperture_);
+  // printf("==============================================\n");
 
   // Read grasp filtering parameters based on approach direction.
   filter_approach_direction_ =
@@ -177,9 +177,9 @@ GraspDetector::GraspDetector(const std::string &config_filename) {
   int min_inliers = config_file.getValueOfKey<int>("min_inliers", 1);
   clustering_ = std::make_unique<Clustering>(min_inliers);
   cluster_grasps_ = min_inliers > 0 ? true : false;
-  printf("============ CLUSTERING ======================\n");
-  printf("min_inliers: %d\n", min_inliers);
-  printf("==============================================\n\n");
+  // printf("============ CLUSTERING ======================\n");
+  // printf("min_inliers: %d\n", min_inliers);
+  // printf("==============================================\n\n");
 
   // Read grasp selection parameters.
   num_selected_ = config_file.getValueOfKey<int>("num_selected", 100);
@@ -302,12 +302,12 @@ std::vector<std::unique_ptr<candidate::Hand>> GraspDetector::detectGrasps(
   double t_cluster = omp_get_wtime() - t0_cluster;
 
   // 7. Sort grasps by their score.
-  std::sort(clusters.begin(), clusters.end(), isScoreGreater);
-  printf("======== Selected grasps ========\n");
-  for (int i = 0; i < clusters.size(); i++) {
-    std::cout << "Grasp " << i << ": " << clusters[i]->getScore() << "\n";
-  }
-  printf("Selected the %d best grasps.\n", (int)clusters.size());
+  // std::sort(clusters.begin(), clusters.end(), isScoreGreater);
+  // printf("======== Selected grasps ========\n");
+  // for (int i = 0; i < clusters.size(); i++) {
+  //   std::cout << "Grasp " << i << ": " << clusters[i]->getScore() << "\n";
+  // }
+  // printf("Selected the %d best grasps.\n", (int)clusters.size());
   double t_total = omp_get_wtime() - t0_total;
 
   printf("======== RUNTIMES ========\n");
@@ -411,10 +411,25 @@ std::vector<std::unique_ptr<candidate::Hand>> GraspDetector::selectGrasps(
                     isScoreGreater);
   std::vector<std::unique_ptr<candidate::Hand>> hands_out;
 
+  // for (int i = 0; i < middle; i++) {
+  //   hands_out.push_back(std::move(hands[i]));
+  //   printf(" grasp #%d, score: %3.4f\n", i, hands_out[i]->getScore());
+  // }
+  printf("======== Top Selected Grasps ========\n");
   for (int i = 0; i < middle; i++) {
     hands_out.push_back(std::move(hands[i]));
-    printf(" grasp #%d, score: %3.4f\n", i, hands_out[i]->getScore());
+    Eigen::Vector3d position = hands_out[i]->getPosition();
+    Eigen::Matrix3d orientation = hands_out[i]->getOrientation();
+    Eigen::Vector3d euler_angles = orientation.eulerAngles(2, 1, 0); // ZYX order
+    Eigen::Quaterniond quaternion(orientation);
+
+    printf("Grasp #%d: Score = %3.4f\n", i + 1, hands_out[i]->getScore());
+    printf("\tPosition: [%.3f, %.3f, %.3f]\n", position.x(), position.y(), position.z());
+    // printf("\tOrientation (Euler angles): [%.3f, %.3f, %.3f] (Yaw, Pitch, Roll)\n",
+    //        euler_angles[0], euler_angles[1], euler_angles[2]);
+    printf("\tOrientation (Quaternion): [w: %.3f, x: %.3f, y: %.3f, z: %.3f]\n", quaternion.w(), quaternion.x(), quaternion.y(), quaternion.z());
   }
+  printf("=====================================\n");
 
   return hands_out;
 }
