@@ -30,18 +30,18 @@ GraspDetector::GraspDetector(const std::string &config_filename) {
       config_file.getValueOfKey<bool>("plot_clustered_grasps", false);
   plot_selected_grasps_ =
       config_file.getValueOfKey<bool>("plot_selected_grasps", false);
-  // printf("============ PLOTTING ========================\n");
-  // printf("plot_normals: %s\n", plot_normals_ ? "true" : "false");
-  // printf("plot_samples %s\n", plot_samples_ ? "true" : "false");
-  // printf("plot_candidates: %s\n", plot_candidates_ ? "true" : "false");
-  // printf("plot_filtered_candidates: %s\n",
-  //        plot_filtered_candidates_ ? "true" : "false");
-  // printf("plot_valid_grasps: %s\n", plot_valid_grasps_ ? "true" : "false");
-  // printf("plot_clustered_grasps: %s\n",
-  //        plot_clustered_grasps_ ? "true" : "false");
-  // printf("plot_selected_grasps: %s\n",
-  //        plot_selected_grasps_ ? "true" : "false");
-  // printf("==============================================\n");
+  printf("============ PLOTTING ========================\n");
+  printf("plot_normals: %s\n", plot_normals_ ? "true" : "false");
+  printf("plot_samples %s\n", plot_samples_ ? "true" : "false");
+  printf("plot_candidates: %s\n", plot_candidates_ ? "true" : "false");
+  printf("plot_filtered_candidates: %s\n",
+         plot_filtered_candidates_ ? "true" : "false");
+  printf("plot_valid_grasps: %s\n", plot_valid_grasps_ ? "true" : "false");
+  printf("plot_clustered_grasps: %s\n",
+         plot_clustered_grasps_ ? "true" : "false");
+  printf("plot_selected_grasps: %s\n",
+         plot_selected_grasps_ ? "true" : "false");
+  printf("==============================================\n");
 
   // Create object to generate grasp candidates.
   candidate::CandidatesGenerator::Parameters generator_params;
@@ -320,6 +320,7 @@ std::vector<std::unique_ptr<candidate::Hand>> GraspDetector::detectGrasps(
   printf(" TOTAL: %3.4fs\n", t_total);
 
   if (plot_selected_grasps_) {
+    printf("Plotting Selected Grasps: \n");
     plotter_->plotFingers3D(clusters, cloud.getCloudOriginal(),
                             "Selected Grasps", hand_geom, false);
   }
@@ -427,7 +428,7 @@ std::vector<std::unique_ptr<candidate::Hand>> GraspDetector::selectGrasps(
     printf("\tPosition: [%.3f, %.3f, %.3f]\n", position.x(), position.y(), position.z());
     // printf("\tOrientation (Euler angles): [%.3f, %.3f, %.3f] (Yaw, Pitch, Roll)\n",
     //        euler_angles[0], euler_angles[1], euler_angles[2]);
-    printf("\tOrientation (Quaternion): [w: %.3f, x: %.3f, y: %.3f, z: %.3f]\n", quaternion.w(), quaternion.x(), quaternion.y(), quaternion.z());
+    printf("\tOrientation (Quaternion): [w: %.4f, x: %.4f, y: %.4f, z: %.4f]\n", quaternion.w(), quaternion.x(), quaternion.y(), quaternion.z());
   }
   printf("=====================================\n");
 
